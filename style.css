@@ -13,8 +13,130 @@ html {
 
 body {
   font-family: 'inter', sans-serif;
-  color: #444;
-  background-color: #f3f3f3;
   height: 100vh;
   padding: 2rem;
+}
+
+.app {
+  max-width: 414px;
+  margin: 0 auto;
+}
+
+/* MAIN */
+
+.titile {
+  font-family: 'Lora', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #064db7;
+
+  margin: 140px 0 80px 0;
+}
+
+/* EDIT TODO */
+
+.addTodo {
+  display: grid;
+  justify-content: center;
+
+  margin-bottom: 80px;
+}
+
+.addTodo__background {
+  background-color: #fafafa;
+  width: 414px;
+  height: 71px;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form--check {
+  height: 19px;
+  width: 19px;
+  border: 1px solid #a6a6a6;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.form--check:checked {
+  color: #064db7;
+}
+
+.form--input {
+  font-size: 16px;
+  line-height: 20px;
+
+  background-color: #fafafa;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.addTodo__date {
+  font-size: 10px;
+  color: #a6a6a6;
+  margin: 16px 0 0 30px;
+}
+
+/* DIVIDER */
+
+.divider {
+  width: 414px;
+  border-bottom: 1px solid #000;
+
+  margin-bottom: 19px;
+}
+
+.divider__subTitle {
+  font-size: 16px;
+  color: #064db7;
+  margin-bottom: 10px;
+}
+
+/*  ACTIVE TODOS */
+.activeTodo {
+  overflow: scroll;
+}
+
+.todo__row {
+  width: 414px;
+  margin-bottom: 19px;
+
+  display: flex;
+  flex-direction: row;
+}
+.todo__value {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.btn--logged {
+  font-size: 12px;
+  line-height: 15px;
+  color: #a6a6a6;
+  background-color: #fff;
+  border: none;
+
+  margin: 60px 0 20px 0;
+}
+
+.btn--logged:hover {
+  cursor: pointer;
+}
+
+.completedTodo {
+  opacity: 0;
+  transition: all 1s;
+  overflow: scroll;
+}
+
+.todo__value,
+.completed {
+  color: #a6a6a6;
 }

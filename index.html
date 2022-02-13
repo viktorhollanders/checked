@@ -17,12 +17,17 @@
     <main class="app">
       <h1 class="titile">CHECKED</h1>
 
-      <section class="editTodo">
-        <div class="editTodo">
+      <section class="addTodo">
+        <div class="addTodo__background">
           <form class="form form--add">
-            <input class="editTodo__check" type="checkbox" />
-            <textarea></textarea>
+            <input class="form--check" type="checkbox" />
+            <textarea
+              class="form--input"
+              placeholder="New to-do"
+              rows="1"
+            ></textarea>
           </form>
+          <p class="addTodo__date">Wed, 3 Feb</p>
         </div>
       </section>
 
@@ -32,7 +37,7 @@
 
       <section class="activeTodo">
         <div class="todo__row">
-          <input class="todo__check" type="checkbox" />
+          <input class="form--check" type="checkbox" />
           <p class="todo__value">Buy ticket to NYC</p>
         </div>
       </section>
@@ -40,19 +45,8 @@
 
       <section class="completedTodo">
         <div class="todo__row">
-          <input class="todo__check" type="checkbox" />
-          <p class="todo__value">Buy ticket to RVK</p>
-        </div>
-      </section>
-
-      <section class="contextMenu">
-        <button class="addTodo--btn btn--addTodo">
-          <img class="addTodo--btn__icon" src="" alt="" />
-        </button>
-        <div class="delete__background">
-          <button class="delete__btn btn--delete">
-            <img class="delete--btn__icon" src="" alt="" />
-          </button>
+          <input class="form--check" type="checkbox" checked />
+          <p class="todo__value completed">Buy ticket to RVK</p>
         </div>
       </section>
     </main>

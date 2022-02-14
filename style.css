@@ -64,11 +64,7 @@ body {
   margin-right: 10px;
 }
 
-.form--check:checked {
-  color: #064db7;
-}
-
-.form--input {
+.addTodo__input--todo {
   font-size: 16px;
   line-height: 20px;
 
@@ -111,7 +107,7 @@ body {
   display: flex;
   flex-direction: row;
 }
-.todo__value {
+.todo__content {
   font-size: 16px;
   line-height: 20px;
 }
@@ -131,12 +127,11 @@ body {
 }
 
 .completedTodo {
-  opacity: 0;
+  opacity: 100;
   transition: all 1s;
   overflow: scroll;
 }
 
-.todo__value,
 .completed {
   color: #a6a6a6;
 }

@@ -1,32 +1,41 @@
 'use strict';
+let todoList = [];
 
-const containerApp = document.querySelector('.app');
-const containerActiveTodods = document.querySelector('.activeTodo');
-const containerCompletedTodo = document.querySelector('.completedTodo');
+// CONTAINER
+const containerActive = document.querySelector('.activeTodos');
+const containerCompleted = document.querySelector('.completedTodos');
 
-const btnLogged = document.querySelector('.btn--logged');
+// USER ACTIONS
+const inputUserAddTodo = document.querySelector('.addTodo__input--content');
 
-const inputAddTodo = document.querySelector('.addTodo__input--todo');
-const inputCheckBox = document.querySelector('.addTodo__input--cheskbox');
+function createTodo(text) {
+  const todo = {
+    text,
+    checked: false,
+    id: Date.now(),
+  };
+  todoList.push(todo);
+}
 
-inputAddTodo.addEventListener('keydown', function (e) {
+function updateTodoList(list) {
+  const item = list.slice(-1);
+
+  const todoRowHTML = `
+    <form class="form todo__row" >
+    <input id="${item[0].id}" class="form--check addTodo__input--checkbox" type="checkbox" />
+    <p class="todo__content">${item[0].text}</p>
+    </form>`;
+
+  containerActive.insertAdjacentHTML('afterbegin', todoRowHTML);
+}
+
+inputUserAddTodo.addEventListener('keydown', function (e) {
   if (e.code === 'Enter') {
     e.preventDefault();
+    createTodo(inputUserAddTodo.value);
 
-    const newTodoHTML = `
-         <div class="todo__row">
-          <input class="form--check" type="checkbox" />
-          <p class="todo__content">${inputAddTodo.value}</p>
-         </div>`;
-
-    containerActiveTodods.insertAdjacentHTML('afterbegin', newTodoHTML);
-
-    inputAddTodo.value = '';
-    inputAddTodo.blur();
-  }
-});
-
-inputCheckBox.addEventListener('click', function (e) {
-  if (inputCheckBox.checked) {
+    inputUserAddTodo.value = '';
+    inputUserAddTodo.blur();
+    updateTodoList(todoList);
   }
 });

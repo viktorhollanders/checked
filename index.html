@@ -20,9 +20,12 @@
       <section class="addTodo">
         <div class="addTodo__background">
           <form class="form form--add">
-            <input class="form--check addTodo__input--cheskbox" type="checkbox" />
+            <input
+              class="form--check addTodo__input--checkbox"
+              type="checkbox"
+            />
             <textarea
-              class="form--input addTodo__input--todo"
+              class="form--input addTodo__input--content"
               placeholder="New to-do"
               rows="1"
             ></textarea>
@@ -35,12 +38,12 @@
         <h2 class="divider__subTitle">TODO'S</h2>
       </div>
 
-      <section class="activeTodo"></section>
+      <section class="activeTodos"></section>
       <button class="btn--logged">Show 1 logged items</button>
 
-      <section class="completedTodo">
+      <section class="completedTodos">
         <form class="form todo__row">
-          <input class="form--check" type="checkbox" checked />
+          <input class="form--check addTodo__input--checkbox" type="checkbox" />
           <p class="todo__content completed">Buy ticket to RVK</p>
         </form>
       </section>

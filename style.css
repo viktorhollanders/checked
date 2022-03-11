@@ -64,7 +64,7 @@ body {
   margin-right: 10px;
 }
 
-.addTodo__input--todo {
+.addTodo__input--content {
   font-size: 16px;
   line-height: 20px;
 
@@ -96,7 +96,7 @@ body {
 }
 
 /*  ACTIVE TODOS */
-.activeTodo {
+.activeTodos {
   overflow: scroll;
 }
 
@@ -126,7 +126,7 @@ body {
   cursor: pointer;
 }
 
-.completedTodo {
+.completedTodos {
   opacity: 100;
   transition: all 1s;
   overflow: scroll;

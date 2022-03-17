@@ -1,5 +1,6 @@
 'use strict';
 let todoList = [];
+let completedTodosCount;
 
 // CONTAINER
 const containerActive = document.querySelector('.activeTodos');
@@ -35,13 +36,16 @@ function createTodo(text) {
 }
 
 function updateLoggedCount() {
-  const completedTodosCount = containerCompleted.childElementCount;
+  const count = containerCompleted.childElementCount;
+  completedTodosCount = count;
   if (completedTodosCount > 0) {
-    btnShowCompletedTodos.textContent = `Show ${completedTodosCount} logged item`;
     btnShowCompletedTodos.classList.remove('hidden');
+    btnShowCompletedTodos.textContent = `Show ${count} logged items`;
   } else {
-    btnShowCompletedTodos.textContent = `Show ${completedTodosCount} logged item`;
+    completedTodosCount = containerCompleted.childElementCount;
     btnShowCompletedTodos.classList.add('hidden');
+    containerCompleted.style.display = 'none';
+    btnShowCompletedTodos.textContent = `Show ${count} logged items`;
   }
 }
 
@@ -66,6 +70,7 @@ document.addEventListener('click', function (e) {
     containerCompleted.appendChild(completedTodo);
     completedTodo.classList.add('completed');
     updateLoggedCount();
+    console.log(completedTodosCount);
   } else if (
     e.target.className == 'form--check addTodo__input--checkbox' &&
     !e.target.checked
@@ -74,6 +79,16 @@ document.addEventListener('click', function (e) {
     containerActive.appendChild(completedTodo);
     completedTodo.classList.remove('completed');
     updateLoggedCount();
+    console.log(completedTodosCount);
   }
 });
 
+btnShowCompletedTodos.addEventListener('click', function () {
+  if (containerCompleted.style.display === 'block') {
+    containerCompleted.style.display = 'none';
+    btnShowCompletedTodos.textContent = `Show ${completedTodosCount} logged items`;
+  } else {
+    containerCompleted.style.display = 'block';
+    btnShowCompletedTodos.textContent = `Hide ${completedTodosCount} logged items`;
+  }
+});

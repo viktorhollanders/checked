@@ -8,6 +8,7 @@ const containerCompleted = document.querySelector('.completedTodos');
 
 // BUTTONS
 const btnShowCompletedTodos = document.querySelector('.btn--logged');
+const btnDelet = document.querySelector('.btn--delete');
 
 // USER ACTIONS
 const inputUserAddTodo = document.querySelector('.addTodo__input--content');
@@ -18,6 +19,7 @@ function renderTodo(todo) {
       <form id="${todo.id}" class="form todo__row">
         <input id="${todo.id}" class="form--check addTodo__input--checkbox" type="checkbox"/>
         <p class="todo__content">${todo.text}</p>
+        <input id="${todo.id}" class="todo__selected" type="radio">
       </form>`;
 
   containerActive.insertAdjacentHTML('afterbegin', todoRowHTML);
@@ -27,6 +29,7 @@ function createTodo(text) {
   // create todo item
   const todo = {
     text,
+    checked: false,
     id: Date.now(),
   };
   todoList.push(todo);
@@ -49,6 +52,23 @@ function updateLoggedCount() {
   }
 }
 
+function updateStatus(element, container, setClass) {
+  container.appendChild(element);
+  if (setClass === 'add') element.classList.add('completed');
+  if (setClass === 'remove') element.classList.remove('completed');
+  updateLoggedCount();
+}
+
+function updateCheckedState(e) {
+  const completedTodo = document.getElementById(`${e.target.id}`);
+
+  if (e.target.className == 'form--check addTodo__input--checkbox') {
+    e.target.checked
+      ? updateStatus(completedTodo, containerCompleted, 'add')
+      : updateStatus(completedTodo, containerActive, 'remove');
+  }
+}
+
 inputUserAddTodo.addEventListener('keydown', function (e) {
   if (e.code === 'Enter') {
     e.preventDefault();
@@ -59,29 +79,7 @@ inputUserAddTodo.addEventListener('keydown', function (e) {
   }
 });
 
-// When a user checks an element log the element and status to the console
-
-document.addEventListener('click', function (e) {
-  if (
-    e.target.className == 'form--check addTodo__input--checkbox' &&
-    e.target.checked
-  ) {
-    const completedTodo = document.getElementById(`${e.target.id}`);
-    containerCompleted.appendChild(completedTodo);
-    completedTodo.classList.add('completed');
-    updateLoggedCount();
-    console.log(completedTodosCount);
-  } else if (
-    e.target.className == 'form--check addTodo__input--checkbox' &&
-    !e.target.checked
-  ) {
-    const completedTodo = document.getElementById(`${e.target.id}`);
-    containerActive.appendChild(completedTodo);
-    completedTodo.classList.remove('completed');
-    updateLoggedCount();
-    console.log(completedTodosCount);
-  }
-});
+document.addEventListener('click', updateCheckedState);
 
 btnShowCompletedTodos.addEventListener('click', function () {
   if (containerCompleted.style.display === 'block') {
@@ -91,4 +89,10 @@ btnShowCompletedTodos.addEventListener('click', function () {
     containerCompleted.style.display = 'block';
     btnShowCompletedTodos.textContent = `Hide ${completedTodosCount} logged items`;
   }
+});
+
+// if input rado is checked and todo is in completed section remove item from DOM and from todos array.
+
+btnDelet.addEventListener('click', function () {
+  console.log(todoList);
 });

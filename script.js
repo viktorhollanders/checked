@@ -20,6 +20,9 @@ function renderTodo(list, container) {
       <form id="${todo.id}" class="form todo__row">
         <input id="${todo.id}" class="form--check addTodo__input--checkbox" type="checkbox"/>
         <p class="todo__content">${todo.text}</p>
+        <button type="button" class="btn--delete hidden">
+          <img class="btn--delete__icon" src="/icons/delete-todo.svg" alt="delete todo icon"/>
+        </button>
         </form>`;
 
     if (todo.checked === false && container === containerActive) {

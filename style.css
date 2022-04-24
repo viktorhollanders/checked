@@ -121,14 +121,16 @@ body {
 }
 
 .btn--delete {
-  display: flex;
   border: none;
-  background-color: #fff;
-  padding: 2px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
 }
 
-.btn--delete__icon {
-  display: inline-block;
+.btn--delete embed {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
 }
 
 /* LOGGED TODOS*/

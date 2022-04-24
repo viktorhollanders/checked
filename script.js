@@ -21,7 +21,7 @@ function renderTodo(list, container) {
         <input id="${todo.id}" class="form--check addTodo__input--checkbox" type="checkbox"/>
         <p class="todo__content">${todo.text}</p>
         <button type="button" class="btn--delete hidden">
-          <img class="btn--delete__icon" src="/icons/delete-todo.svg" alt="delete todo icon"/>
+         <embed src="icons/delete-icon.svg">
         </button>
         </form>`;
 
@@ -125,4 +125,8 @@ btnLogged.addEventListener('click', function () {
   updateBtnLoggedState();
 });
 
-
+document.addEventListener('click', function (e) {
+  if (e.target.className === 'btn--delete') {
+    console.log(e.target);
+  }
+});

@@ -1,28 +1,31 @@
 'use strict';
 let todoList = [];
-let completedTodosCount;
 
 // CONTAINER
 const containerActive = document.querySelector('.activeTodos');
 const containerCompleted = document.querySelector('.completedTodos');
 
 // BUTTONS
-const btnShowCompletedTodos = document.querySelector('.btn--logged');
-const btnDelet = document.querySelector('.btn--delete');
+const btnLogged = document.querySelector('.btn--logged');
 
 // USER ACTIONS
 const inputUserAddTodo = document.querySelector('.addTodo__input--content');
 const inputUserDate = document.querySelector('.addTodo__date');
 
-function renderTodo(todo) {
-  const todoRowHTML = `
+function renderTodo(list, container) {
+  container.innerHTML = '';
+
+  list.forEach(todo => {
+    const todoRowHTML = `
       <form id="${todo.id}" class="form todo__row">
         <input id="${todo.id}" class="form--check addTodo__input--checkbox" type="checkbox"/>
         <p class="todo__content">${todo.text}</p>
-        <input id="${todo.id}" class="todo__selected" type="radio">
-      </form>`;
+        </form>`;
 
-  containerActive.insertAdjacentHTML('afterbegin', todoRowHTML);
+    if (todo.checked === false && container === containerActive) {
+      containerActive.insertAdjacentHTML('afterbegin', todoRowHTML);
+    }
+  });
 }
 
 function createTodo(text) {
@@ -35,37 +38,66 @@ function createTodo(text) {
   todoList.push(todo);
 
   // add todo to ui
-  renderTodo(todo);
+  renderTodo(todoList, containerActive);
 }
 
-function updateLoggedCount() {
-  const count = containerCompleted.childElementCount;
-  completedTodosCount = count;
-  if (completedTodosCount > 0) {
-    btnShowCompletedTodos.classList.remove('hidden');
-    btnShowCompletedTodos.textContent = `Show ${count} logged items`;
-  } else {
-    completedTodosCount = containerCompleted.childElementCount;
-    btnShowCompletedTodos.classList.add('hidden');
-    containerCompleted.style.display = 'none';
-    btnShowCompletedTodos.textContent = `Show ${count} logged items`;
-  }
+function toggleCheckedStatus(checkbox) {
+  const todo = todoList.find(todo => todo.id == checkbox.id);
+  checkbox.checked ? (todo.checked = true) : (todo.checked = false);
+}
+
+function showHidElement(element, setClass, className = 'hidden') {
+  setClass === 'add'
+    ? element.classList.add(className)
+    : element.classList.remove(className);
 }
 
 function updateStatus(element, container, setClass) {
   container.appendChild(element);
-  if (setClass === 'add') element.classList.add('completed');
-  if (setClass === 'remove') element.classList.remove('completed');
-  updateLoggedCount();
+  showHidElement(element, setClass, 'completed');
 }
 
-function updateCheckedState(e) {
-  const completedTodo = document.getElementById(`${e.target.id}`);
+function updateCheckedState(todo) {
+  const completedTodo = document.getElementById(`${todo.id}`);
+  todo.checked
+    ? updateStatus(completedTodo, containerCompleted, 'add')
+    : updateStatus(completedTodo, containerActive, 'remove');
+}
 
-  if (e.target.className == 'form--check addTodo__input--checkbox') {
-    e.target.checked
-      ? updateStatus(completedTodo, containerCompleted, 'add')
-      : updateStatus(completedTodo, containerActive, 'remove');
+function updateBtnLoggedState() {
+  const count = containerCompleted.childElementCount;
+  const plural = count > 1 ? 's' : '';
+
+  if (count > 0) {
+    showHidElement(btnLogged, 'remove');
+    // btnLogged.classList.remove('hidden');
+  } else {
+    // btnLogged.classList.add('hidden');
+    showHidElement(btnLogged, 'add');
+    showHidElement(containerCompleted, 'add');
+  }
+
+  containerCompleted.classList.contains('hidden')
+    ? (btnLogged.textContent = `Show ${count} logged item${plural}`)
+    : (btnLogged.textContent = `Hide ${count} logged item${plural}`);
+}
+
+function completedTodo(e) {
+  const currentTodo = e.target;
+  if (currentTodo.className === 'form--check addTodo__input--checkbox') {
+    toggleCheckedStatus(currentTodo);
+    updateCheckedState(currentTodo);
+    updateBtnLoggedState();
+
+    const deleteBtn = document.querySelector('.btn--delete');
+    if (
+      currentTodo.checked &&
+      containerCompleted.classList.contains('hidden')
+    ) {
+      showHidElement(deleteBtn, 'remove');
+    } else {
+      showHidElement(deleteBtn, 'add');
+    }
   }
 }
 
@@ -79,20 +111,15 @@ inputUserAddTodo.addEventListener('keydown', function (e) {
   }
 });
 
-document.addEventListener('click', updateCheckedState);
+document.addEventListener('click', completedTodo);
 
-btnShowCompletedTodos.addEventListener('click', function () {
-  if (containerCompleted.style.display === 'block') {
-    containerCompleted.style.display = 'none';
-    btnShowCompletedTodos.textContent = `Show ${completedTodosCount} logged items`;
+btnLogged.addEventListener('click', function () {
+  if (containerCompleted.classList.contains('hidden')) {
+    showHidElement(containerCompleted, 'remove');
   } else {
-    containerCompleted.style.display = 'block';
-    btnShowCompletedTodos.textContent = `Hide ${completedTodosCount} logged items`;
+    showHidElement(containerCompleted, 'add');
   }
+  updateBtnLoggedState();
 });
 
-// if input rado is checked and todo is in completed section remove item from DOM and from todos array.
 
-btnDelet.addEventListener('click', function () {
-  console.log(todoList);
-});

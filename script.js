@@ -130,7 +130,9 @@ btnLogged.addEventListener('click', function () {
 });
 
 document.addEventListener('click', function (e) {
+  const currentTodo = document.getElementById(`${e.target.id}`);
   if (e.target.className === 'btn--delete') {
-    console.log(e.target);
+    currentTodo.remove();
+    updateBtnLoggedState();
   }
 });

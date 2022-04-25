@@ -20,7 +20,7 @@ function renderTodo(list, container) {
       <form id="${todo.id}" class="form todo__row">
         <input id="${todo.id}" class="form--check addTodo__input--checkbox" type="checkbox"/>
         <p class="todo__content">${todo.text}</p>
-        <button type="button" class="btn--delete hidden">
+        <button type="button" id="${todo.id}" class="btn--delete hidden">
          <embed src="icons/delete-icon.svg">
         </button>
         </form>`;
@@ -44,15 +44,15 @@ function createTodo(text) {
   renderTodo(todoList, containerActive);
 }
 
-function toggleCheckedStatus(checkbox) {
-  const todo = todoList.find(todo => todo.id == checkbox.id);
-  checkbox.checked ? (todo.checked = true) : (todo.checked = false);
-}
-
 function showHidElement(element, setClass, className = 'hidden') {
   setClass === 'add'
     ? element.classList.add(className)
     : element.classList.remove(className);
+}
+
+function toggleCheckedStatus(checkbox) {
+  const todo = todoList.find(todo => todo.id == checkbox.id);
+  checkbox.checked ? (todo.checked = true) : (todo.checked = false);
 }
 
 function updateStatus(element, container, setClass) {
@@ -85,22 +85,26 @@ function updateBtnLoggedState() {
     : (btnLogged.textContent = `Hide ${count} logged item${plural}`);
 }
 
+function showHideDeletButton(todo) {
+  const completedTodo = document.getElementById(`${todo.id}`);
+
+  const deleteButton = completedTodo.querySelector('button');
+
+  if (containerCompleted.contains(completedTodo)) {
+    showHidElement(deleteButton, 'remove');
+  } else {
+    showHidElement(deleteButton, 'add');
+  }
+}
+
 function completedTodo(e) {
   const currentTodo = e.target;
+
   if (currentTodo.className === 'form--check addTodo__input--checkbox') {
     toggleCheckedStatus(currentTodo);
     updateCheckedState(currentTodo);
     updateBtnLoggedState();
-
-    const deleteBtn = document.querySelector('.btn--delete');
-    if (
-      currentTodo.checked &&
-      containerCompleted.classList.contains('hidden')
-    ) {
-      showHidElement(deleteBtn, 'remove');
-    } else {
-      showHidElement(deleteBtn, 'add');
-    }
+    showHideDeletButton(currentTodo);
   }
 }
 

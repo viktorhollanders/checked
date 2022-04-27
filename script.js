@@ -118,6 +118,18 @@ inputUserAddTodo.addEventListener('keydown', function (e) {
   }
 });
 
+function deleteTodo(e) {
+  const currentTodo = document.getElementById(`${e.target.id}`);
+  if (e.target.className === 'btn--delete') {
+    const index = todoList.findIndex(n => n.id == currentTodo.id);
+
+    todoList.splice(index, 1);
+    currentTodo.remove();
+
+    updateBtnLoggedState();
+  }
+}
+
 document.addEventListener('click', completedTodo);
 
 btnLogged.addEventListener('click', function () {
@@ -129,14 +141,4 @@ btnLogged.addEventListener('click', function () {
   updateBtnLoggedState();
 });
 
-document.addEventListener('click', function (e) {
-  const currentTodo = document.getElementById(`${e.target.id}`);
-  if (e.target.className === 'btn--delete') {
-    const index = todoList.findIndex(n => n.id == currentTodo.id);
-
-    todoList.splice(index, 1);
-    currentTodo.remove();
-
-    updateBtnLoggedState();
-  }
-});
+document.addEventListener('click', deleteTodo);

@@ -2,10 +2,12 @@
 let todoList = [];
 
 // CONTAINER
+const containerAddTodo = document.querySelector('.addTodo');
 const containerActive = document.querySelector('.activeTodos');
 const containerCompleted = document.querySelector('.completedTodos');
 
 // BUTTONS
+const btnAddTodo = document.querySelector('.btn--addTodo');
 const btnLogged = document.querySelector('.btn--logged');
 
 // USER ACTIONS
@@ -18,7 +20,7 @@ function renderTodo(list, container) {
   list.forEach(todo => {
     const todoRowHTML = `
       <form id="${todo.id}" class="form todo__row">
-        <input id="${todo.id}" class="form--check addTodo__input--checkbox" type="checkbox"/>
+        <input id="${todo.id}" class="form--check todo__input--checkbox" type="checkbox"/>
         <p class="todo__content">${todo.text}</p>
         <button type="button" id="${todo.id}" class="btn--delete hidden">
          <embed src="icons/delete-icon.svg">
@@ -42,6 +44,7 @@ function createTodo(text) {
 
   // add todo to ui
   renderTodo(todoList, containerActive);
+  containerAddTodo.style.display = 'none';
 }
 
 function showHidElement(element, setClass, className = 'hidden') {
@@ -100,7 +103,7 @@ function showHideDeletButton(todo) {
 function completedTodo(e) {
   const currentTodo = e.target;
 
-  if (currentTodo.className === 'form--check addTodo__input--checkbox') {
+  if (currentTodo.className === 'form--check todo__input--checkbox') {
     toggleCheckedStatus(currentTodo);
     updateCheckedState(currentTodo);
     updateBtnLoggedState();
@@ -142,3 +145,7 @@ btnLogged.addEventListener('click', function () {
 });
 
 document.addEventListener('click', deleteTodo);
+
+btnAddTodo.addEventListener('click', function () {
+  containerAddTodo.style.display = 'grid';
+});

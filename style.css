@@ -18,6 +18,10 @@ body {
 }
 
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   max-width: 414px;
   margin: 0 auto;
 }
@@ -36,7 +40,7 @@ body {
 /* EDIT TODO */
 
 .addTodo {
-  display: grid;
+  display: none;
   justify-content: center;
 
   margin-bottom: 80px;
@@ -46,7 +50,7 @@ body {
   background-color: #fafafa;
   width: 414px;
   height: 71px;
-  padding: 12px;
+  padding: 12px 24px;
   border-radius: 5px;
 }
 
@@ -65,6 +69,7 @@ body {
 }
 
 .addTodo__input--content {
+  width: 100%;
   font-size: 16px;
   line-height: 20px;
 
@@ -77,7 +82,7 @@ body {
 .addTodo__date {
   font-size: 10px;
   color: #a6a6a6;
-  margin: 16px 0 0 30px;
+  margin: 16px 0 0 0;
 }
 
 /* DIVIDER */
@@ -142,11 +147,12 @@ body {
 .btn--logged {
   font-size: 12px;
   line-height: 15px;
+  text-align: left;
   color: #a6a6a6;
   background-color: #fff;
   border: none;
 
-  margin: 60px 0 20px 0;
+  margin: 60px 250px 20px 0;
 }
 
 .btn--logged:hover {
@@ -160,4 +166,23 @@ body {
 
 .completed {
   color: #a6a6a6;
+}
+
+.btn--addTodo {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+
+  /* Position of button */
+  z-index: 1;
+  position: absolute;
+  top: 700px;
+  left: calc(100vw / 2);
+}
+
+.btn--addTodo embed {
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
 }

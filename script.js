@@ -45,6 +45,7 @@ function createTodo(text) {
   // add todo to ui
   renderTodo(todoList, containerActive);
   containerAddTodo.style.display = 'none';
+  showHidElement(btnAddTodo, 'remove');
 }
 
 function showHidElement(element, setClass, className = 'hidden') {
@@ -148,4 +149,5 @@ document.addEventListener('click', deleteTodo);
 
 btnAddTodo.addEventListener('click', function () {
   containerAddTodo.style.display = 'grid';
+  showHidElement(btnAddTodo, 'add');
 });

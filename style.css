@@ -14,7 +14,6 @@ html {
 body {
   font-family: 'inter', sans-serif;
   height: 100vh;
-  padding: 2rem;
 }
 
 .app {
@@ -34,7 +33,7 @@ body {
   text-align: center;
   color: #064db7;
 
-  margin: 140px 0 80px 0;
+  margin: 60px 0 80px 0;
 }
 
 /* EDIT TODO */
@@ -102,7 +101,7 @@ body {
 
 /*  TODOS */
 .activeTodos {
-  max-height: 350px;
+  max-height: 156px;
   overflow: scroll;
 }
 
@@ -112,6 +111,7 @@ body {
 
   display: flex;
   flex-direction: row;
+  align-content: center;
 }
 .todo__content {
   font-size: 16px;
@@ -130,6 +130,8 @@ body {
   background-color: transparent;
   outline: none;
   cursor: pointer;
+  height: 20px;
+  width: 20px;
 }
 
 .btn--delete embed {
@@ -152,7 +154,7 @@ body {
   background-color: #fff;
   border: none;
 
-  margin: 60px 250px 20px 0;
+  margin: 40px 250px 20px 0;
 }
 
 .btn--logged:hover {
@@ -160,7 +162,7 @@ body {
 }
 
 .completedTodos {
-  max-height: 350px;
+  max-height: 170px;
   overflow: scroll;
 }
 
@@ -177,7 +179,7 @@ body {
   /* Position of button */
   z-index: 1;
   position: absolute;
-  top: 700px;
+  top: 686px;
   left: calc(100vw / 2);
 }
 

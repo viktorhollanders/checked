@@ -1,7 +1,12 @@
 'use strict';
 let todoList = [];
 
+// ELEMENTS
+const title = document.querySelector('.title');
+
 // CONTAINER
+const containerApp = document.querySelector('.app');
+const containerWelcomBanner = document.querySelector('.welcomBanner');
 const containerAddTodo = document.querySelector('.addTodo');
 const containerActive = document.querySelector('.activeTodos');
 const containerCompleted = document.querySelector('.completedTodos');
@@ -148,6 +153,15 @@ btnLogged.addEventListener('click', function () {
 document.addEventListener('click', deleteTodo);
 
 btnAddTodo.addEventListener('click', function () {
-  containerAddTodo.style.display = 'grid';
-  showHidElement(btnAddTodo, 'add');
+  if (window.getComputedStyle(containerApp).display === 'none') {
+    containerWelcomBanner.style.display = 'none';
+    title.style.transform = 'translatey(0)';
+    btnAddTodo.style.top = '686px';
+    containerApp.style.display = 'flex';
+    containerAddTodo.style.display = 'flex';
+    showHidElement(btnAddTodo, 'add');
+  } else {
+    containerAddTodo.style.display = 'flex';
+    showHidElement(btnAddTodo, 'add');
+  }
 });

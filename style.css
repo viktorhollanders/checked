@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -14,6 +14,7 @@ html {
 body {
   font-family: 'inter', sans-serif;
   height: 100vh;
+  padding: 2rem;
 }
 
 .app {
@@ -33,9 +34,25 @@ body {
   text-align: center;
   color: #064db7;
 
-  margin: 60px 0 80px 0;
+  margin: 40px 0 80px 0;
 }
 
+.welcomBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcomeBanner__text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.welcomBanner__img {
+  height: 42px;
+  width: 24px;
+  margin: 16px;
+}
 /* EDIT TODO */
 
 .addTodo {

@@ -14,9 +14,17 @@
   </head>
 
   <body>
-    <main class="app">
-      <h1 class="title">CHECKED</h1>
+    <h1 class="title">CHECKED</h1>
 
+    <div class="welcomBanner">
+      <p class="welcomeBanner__text">Click to add a new todo</p>
+      <img
+        class="welcomBanner__img"
+        src="icons/arrowDown.svg"
+        alt="down facing arrow"
+      />
+    </div>
+    <main class="app">
       <section class="addTodo">
         <div class="addTodo__background">
           <form class="form form--add">
@@ -38,10 +46,10 @@
       <button class="btn--logged hidden">Show 1 logged item</button>
 
       <section class="completedTodos hidden"></section>
-      <button class="btn--addTodo">
-        <embed src="icons/addTodo-icon.svg" />
-      </button>
     </main>
+    <button class="btn--addTodo">
+      <embed src="icons/addTodo-icon.svg" />
+    </button>
     <script src="script.js"></script>
   </body>
 </html>

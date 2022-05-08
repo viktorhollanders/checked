@@ -139,6 +139,13 @@ function deleteTodo(e) {
   }
 }
 
+function renderWelcomeScreen() {
+  containerWelcomBanner.style.display = 'none';
+  title.style.transform = 'translatey(0)';
+  btnAddTodo.style.top = '686px';
+  containerApp.style.display = 'flex';
+}
+
 document.addEventListener('click', completedTodo);
 
 btnLogged.addEventListener('click', function () {
@@ -154,10 +161,7 @@ document.addEventListener('click', deleteTodo);
 
 btnAddTodo.addEventListener('click', function () {
   if (window.getComputedStyle(containerApp).display === 'none') {
-    containerWelcomBanner.style.display = 'none';
-    title.style.transform = 'translatey(0)';
-    btnAddTodo.style.top = '686px';
-    containerApp.style.display = 'flex';
+    renderWelcomeScreen();
     containerAddTodo.style.display = 'flex';
     showHidElement(btnAddTodo, 'add');
   } else {

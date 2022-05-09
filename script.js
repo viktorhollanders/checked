@@ -64,6 +64,8 @@ function toggleCheckedStatus(checkbox) {
   checkbox.checked ? (todo.checked = true) : (todo.checked = false);
 }
 
+// FUNCTIONS FOR COMPLETE TODO
+
 function updateStatus(element, container, setClass) {
   container.appendChild(element);
   showHidElement(element, setClass, 'completed');
@@ -117,16 +119,6 @@ function completedTodo(e) {
   }
 }
 
-inputUserAddTodo.addEventListener('keydown', function (e) {
-  if (e.code === 'Enter') {
-    e.preventDefault();
-    createTodo(inputUserAddTodo.value);
-
-    inputUserAddTodo.value = '';
-    inputUserAddTodo.blur();
-  }
-});
-
 function deleteTodo(e) {
   const currentTodo = document.getElementById(`${e.target.id}`);
   if (e.target.className === 'btn--delete') {
@@ -139,14 +131,17 @@ function deleteTodo(e) {
   }
 }
 
-function renderWelcomeScreen() {
-  containerWelcomBanner.style.display = 'none';
-  title.style.transform = 'translatey(0)';
-  btnAddTodo.style.top = '686px';
-  containerApp.style.display = 'flex';
-}
+// EVENT LISTENERS
 
-document.addEventListener('click', completedTodo);
+inputUserAddTodo.addEventListener('keydown', function (e) {
+  if (e.code === 'Enter') {
+    e.preventDefault();
+    createTodo(inputUserAddTodo.value);
+
+    inputUserAddTodo.value = '';
+    inputUserAddTodo.blur();
+  }
+});
 
 btnLogged.addEventListener('click', function () {
   if (containerCompleted.classList.contains('hidden')) {
@@ -157,7 +152,13 @@ btnLogged.addEventListener('click', function () {
   updateBtnLoggedState();
 });
 
-document.addEventListener('click', deleteTodo);
+function renderWelcomeScreen() {
+  containerWelcomBanner.style.display = 'none';
+  title.style.transform = 'translatey(0)';
+  title.style.margin = '50px 0 80px 0';
+  btnAddTodo.style.top = '686px';
+  containerApp.style.display = 'flex';
+}
 
 btnAddTodo.addEventListener('click', function () {
   if (window.getComputedStyle(containerApp).display === 'none') {
@@ -169,3 +170,8 @@ btnAddTodo.addEventListener('click', function () {
     showHidElement(btnAddTodo, 'add');
   }
 });
+
+// DOCUMENT EVENT LISTENERS
+
+document.addEventListener('click', completedTodo);
+document.addEventListener('click', deleteTodo);

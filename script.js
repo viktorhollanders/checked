@@ -78,15 +78,13 @@ function updateCheckedState(todo) {
     : updateStatus(completedTodo, containerActive, 'remove');
 }
 
-function updateBtnLoggedState() {
+function showHideBtnLogged() {
   const count = containerCompleted.childElementCount;
   const plural = count > 1 ? 's' : '';
 
   if (count > 0) {
     showHidElement(btnLogged, 'remove');
-    // btnLogged.classList.remove('hidden');
   } else {
-    // btnLogged.classList.add('hidden');
     showHidElement(btnLogged, 'add');
     showHidElement(containerCompleted, 'add');
   }
@@ -114,7 +112,7 @@ function completedTodo(e) {
   if (currentTodo.className === 'form--check todo__input--checkbox') {
     toggleCheckedStatus(currentTodo);
     updateCheckedState(currentTodo);
-    updateBtnLoggedState();
+    showHideBtnLogged();
     showHideDeletButton(currentTodo);
   }
 }
@@ -127,7 +125,7 @@ function deleteTodo(e) {
     todoList.splice(index, 1);
     currentTodo.remove();
 
-    updateBtnLoggedState();
+    showHideBtnLogged();
   }
 }
 
@@ -149,7 +147,7 @@ btnLogged.addEventListener('click', function () {
   } else {
     showHidElement(containerCompleted, 'add');
   }
-  updateBtnLoggedState();
+  showHideBtnLogged();
 });
 
 function renderWelcomeScreen() {

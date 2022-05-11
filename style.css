@@ -14,7 +14,7 @@ html {
 body {
   font-family: 'inter', sans-serif;
   width: 100vw;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 /* WELCOM BANNER */
@@ -203,7 +203,7 @@ body {
 
   /* Position of button */
   position: absolute;
-  top: 315px;
+  top: 325px;
   right: 0;
   left: 0;
   transition: all 0.5s;

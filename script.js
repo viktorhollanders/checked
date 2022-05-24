@@ -1,4 +1,5 @@
 'use strict';
+let todoList = [];
 
 // ELEMENTS
 const title = document.querySelector('.title');
@@ -18,21 +19,10 @@ const btnLogged = document.querySelector('.btn--logged');
 const inputUserAddTodo = document.querySelector('.addTodo__input--content');
 const inputUserDate = document.querySelector('.addTodo__date');
 
-let todoList;
-
-window.addEventListener('load', () => {
-  todoList = JSON.parse(localStorage.getItem('todos')) || [];
-
-  // add todo to ui
-  renderTodo(containerActive);
-  containerAddTodo.style.display = 'none';
-  showHidElement(btnAddTodo, 'remove');
-});
-
-function renderTodo(container) {
+function renderTodo(list, container) {
   container.innerHTML = '';
 
-  todoList.forEach(todo => {
+  list.forEach(todo => {
     const todoRowHTML = `
       <form id="${todo.id}" class="form todo__row">
         <input id="${todo.id}" class="form--check todo__input--checkbox" type="checkbox"/>
@@ -57,7 +47,10 @@ function createTodo(text) {
   };
   todoList.push(todo);
 
-  localStorage.setItem('todos', JSON.stringify(todoList));
+  // add todo to ui
+  renderTodo(todoList, containerActive);
+  containerAddTodo.style.display = 'none';
+  showHidElement(btnAddTodo, 'remove');
 }
 
 function showHidElement(element, setClass, className = 'hidden') {
@@ -125,10 +118,10 @@ function completedTodo(e) {
 function deleteTodo(e) {
   const currentTodo = document.getElementById(`${e.target.id}`);
   if (e.target.className === 'btn--delete') {
-    todoList = todoList.findIndex(n => n.id == currentTodo.id);
+    const index = todoList.findIndex(n => n.id == currentTodo.id);
 
-    localStorage.setItem('todos', JSON.stringify('todoList'));
-    renderTodo();
+    todoList.splice(index, 1);
+    currentTodo.remove();
 
     showHideBtnLogged();
   }

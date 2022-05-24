@@ -127,7 +127,7 @@ function deleteTodo(e) {
   if (e.target.className === 'btn--delete') {
     todoList = todoList.findIndex(n => n.id == currentTodo.id);
 
-    localStorage.setItem('todos', JSON.stringify('todoList'));
+   
     renderTodo();
 
     showHideBtnLogged();

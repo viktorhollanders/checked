@@ -1,10 +1,20 @@
 'use strict';
-let todoList = [];
+
+let todoList;
+
+window.addEventListener('load', () => {
+  todoList = JSON.parse(localStorage.getItem('todos')) || [];
+
+  // add todo to ui
+  renderTodo(containerActive);
+  containerAddTodo.style.display = 'none';
+  showHidElement(btnAddTodo, 'remove');
+});
 
 // ELEMENTS
 const title = document.querySelector('.title');
 
-// CONTAINER
+// CONTAINERS
 const containerApp = document.querySelector('.app');
 const containerWelcomBanner = document.querySelector('.welcomBanner');
 const containerAddTodo = document.querySelector('.addTodo');
@@ -19,10 +29,11 @@ const btnLogged = document.querySelector('.btn--logged');
 const inputUserAddTodo = document.querySelector('.addTodo__input--content');
 const inputUserDate = document.querySelector('.addTodo__date');
 
-function renderTodo(list, container) {
+function renderTodo(container) {
   container.innerHTML = '';
 
-  list.forEach(todo => {
+  todoList.forEach(todo => {
+    
     const todoRowHTML = `
       <form id="${todo.id}" class="form todo__row">
         <input id="${todo.id}" class="form--check todo__input--checkbox" type="checkbox"/>
@@ -47,10 +58,7 @@ function createTodo(text) {
   };
   todoList.push(todo);
 
-  // add todo to ui
-  renderTodo(todoList, containerActive);
-  containerAddTodo.style.display = 'none';
-  showHidElement(btnAddTodo, 'remove');
+  localStorage.setItem('todos', JSON.stringify(todoList));
 }
 
 function showHidElement(element, setClass, className = 'hidden') {
@@ -64,9 +72,7 @@ function toggleCheckedStatus(checkbox) {
   checkbox.checked ? (todo.checked = true) : (todo.checked = false);
 }
 
-// FUNCTIONS FOR COMPLETE TODO
-
-function updateStatus(element, container, setClass) {
+function toggleCompletTodo(element, container, setClass) {
   container.appendChild(element);
   showHidElement(element, setClass, 'completed');
 }
@@ -74,8 +80,8 @@ function updateStatus(element, container, setClass) {
 function updateCheckedState(todo) {
   const completedTodo = document.getElementById(`${todo.id}`);
   todo.checked
-    ? updateStatus(completedTodo, containerCompleted, 'add')
-    : updateStatus(completedTodo, containerActive, 'remove');
+    ? toggleCompletTodo(completedTodo, containerCompleted, 'add')
+    : toggleCompletTodo(completedTodo, containerActive, 'remove');
 }
 
 function showHideBtnLogged() {

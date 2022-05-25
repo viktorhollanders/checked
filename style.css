@@ -1,33 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --primary: #0446a9;
+  --secondery: #7faef5;
+  --black: #000;
+  --gray: #a6a6a6;
+  --light-gray: #fafafa;
 }
 
-html {
-  font-size: 62.5%;
+* {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
+
+input:not([type='checkbox']),
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: initial;
+}
+
+
 
 body {
-  font-family: 'inter', sans-serif;
-  width: 100vw;
-  padding: 2rem;
+  margin: 2rem 1.5rem;
 }
 
-/* WELCOM BANNER */
+.app {
+  max-width: 414px;
+  margin: 0 auto;
+}
 
-.title {
-  font-family: 'Lora', sans-serif;
-  font-size: 32px;
+.app .title {
+  font-family: 'Lora';
+  font-weight: 700;
+  font-size: 2rem;
   text-align: center;
-  color: #064db7;
+  color: var(--primary);
 
-  margin: 50px 0 22px 0;
-  transform: translatey(100px);
-  transition: ease-out 0.5s;
+  margin-top: 220px;
+  margin-bottom: 20px;
 }
 
 .welcomBanner {
@@ -35,182 +51,78 @@ body {
   flex-direction: column;
   align-items: center;
 
-  margin: 22px 0 16px 0;
-  transform: translatey(105px);
+  margin: 0rem 0rem 2.5rem 0rem;
 }
 
-.welcomeBanner__text {
-  font-size: 16px;
+.welcomBanner .welcomBanner__subTitle {
+  font-family: 'Inter';
+  font-size: 1rem;
   font-weight: 500;
   text-align: center;
 }
 
-.welcomBanner__img {
-  height: 42px;
-  width: 24px;
-  margin-top: 16px;
+.welcomBanner img {
+  margin-top: 1rem;
 }
 
-/* MAIN */
-.app {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-
-  max-width: 414px;
-  margin: 0 auto;
-}
-
-/* EDIT TODO */
-
-.addTodo {
-  display: none;
-  justify-content: center;
-
-  margin-bottom: 80px;
-}
-
-.addTodo__background {
-  background-color: #fafafa;
-  width: 414px;
-  height: 71px;
-  padding: 12px 24px;
+.create-todo {
+  background-color: var(--light-gray);
+  padding: 0.75rem 0rem 0.75rem 2.5rem;
   border-radius: 5px;
+  margin: 5rem 0rem;
 }
 
-.form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.form--check {
-  height: 19px;
-  width: 19px;
-  border: 1px solid #a6a6a6;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.addTodo__input--content {
+.create-todo input[type='text'],
+.todo-itme__content input[type='text'] {
+  display: block;
   width: 100%;
-  font-size: 16px;
-  line-height: 20px;
-
-  background-color: #fafafa;
-  border: none;
-  outline: none;
-  resize: none;
+  font-size: 1rem;
 }
 
-.addTodo__date {
-  font-size: 10px;
-  color: #a6a6a6;
-  margin: 16px 0 0 0;
+.create-todo input[type='date'],
+.todo-itme__date input[type='date'] {
+  display: block;
+  font-size: 0.625rem;
+  padding-top: 1rem;
+  color: var(--gray);
 }
 
-/* DIVIDER */
-
-.divider {
-  width: 414px;
-  border-bottom: 1px solid #000;
-
-  margin-bottom: 19px;
+.todo-list h2 {
+  font-size: 1rem;
+  color: var(--primary);
+  border-bottom: 1px solid var(--black);
+  padding: 0rem 0rem 0.652rem 0.313rem;
 }
 
-.divider__subTitle {
-  font-size: 16px;
-  color: #064db7;
-  margin-bottom: 10px;
+.todo-list {
+  margin-bottom: 5rem;
 }
 
-/*  TODOS */
-.activeTodos {
-  max-height: 156px;
-  overflow: scroll;
-}
-
-.todo__row {
-  width: 414px;
-  margin-bottom: 19px;
-
+.todo-list .todo-item {
   display: flex;
-  flex-direction: row;
-  align-content: center;
-}
-.todo__content {
-  font-size: 16px;
-  line-height: 20px;
-  width: 348px;
+  align-items: center;
+  padding: 1.25rem 0.313rem;
 }
 
-.todo__selected {
-  height: 16px;
-  width: 16px;
-  margin-left: 20px;
-}
-
-.btn--delete {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
-}
-
-.btn--delete embed {
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
-}
-
-/* LOGGED TODOS*/
-
-.hidden {
-  opacity: 0;
-}
-
-.btn--logged {
-  font-size: 12px;
-  line-height: 15px;
-  text-align: left;
-  color: #a6a6a6;
-  background-color: #fff;
-  border: none;
-
-  margin: 40px 250px 20px 0;
-}
-
-.btn--logged:hover {
+.todo-item label {
+  display: block;
+  margin-right: 0.652rem;
   cursor: pointer;
 }
 
-.completedTodos {
-  max-height: 170px;
-  overflow: scroll;
+.todo-item .todo-itme__content {
+  flex: 1 1 100%;
 }
 
-.completed {
-  color: #a6a6a6;
+.todo-list .toggle-logged-todos {
+  font-size: 0.75rem;
+  color: var(--gray);
+  margin-top: 5rem;
 }
 
-.btn--addTodo {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-
-  /* Position of button */
+.add-todo {
   position: absolute;
-  top: 325px;
+  top: 400px;
   right: 0;
   left: 0;
-  transition: all 0.5s;
-}
-
-.btn--addTodo embed {
-  width: 30px;
-  height: 30px;
-  pointer-events: none;
 }

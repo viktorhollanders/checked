@@ -6,51 +6,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Checked</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-      type="text/css"
-    />
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
 
   <body>
-    <h1 class="title">CHECKED</h1>
-
-    <div class="welcomBanner">
-      <p class="welcomeBanner__text">Click to add a new todo</p>
-      <img
-        class="welcomBanner__img"
-        src="icons/arrowDown.svg"
-        alt="down facing arrow"
-      />
-    </div>
     <main class="app">
-      <section class="addTodo">
-        <div class="addTodo__background">
-          <form class="form form--add">
-            <textarea
-              class="form--input addTodo__input--content"
-              placeholder="New to-do"
-              rows="1"
-            ></textarea>
-          </form>
-          <p class="addTodo__date">Wed, 3 Feb</p>
-        </div>
+      <h1 class="title">Checked</h1>
+
+      <section class="welcomBanner">
+        <h5 class="welcomBanner__subTitle">Click to add todo</h5>
+        <img src="icons/arrowDown.svg" alt="Down arrow image" />
       </section>
 
-      <div class="divider">
-        <h2 class="divider__subTitle">TODO'S</h2>
-      </div>
+      <section class="create-todo">
+        <form id="newTodo--form">
+          <label>
+            <input type="checkbox" />
+          </label>
+          <input
+            type="text"
+            name="content"
+            id="content"
+            placeholder="New todo"
+          />
+          <input type="date" name="datePicker" id="datePicker" value="" />
+        </form>
+      </section>
 
-      <section class="activeTodos"></section>
-      <button class="btn--logged hidden">Show 1 logged item</button>
+      <section class="todo-list" id="active">
+        <h2>Todo's</h2>
 
-      <section class="completedTodos hidden"></section>
+        <div class="todo-item">
+          <label>
+            <input type="checkbox" />
+          </label>
+
+          <div class="todo-itme__content">
+            <input type="text" value="Refactor code" readonly />
+          </div>
+
+          <div class="todo-itme__date">
+            <input type="date" name="datePicker" id="datePicker" value="" />
+          </div>
+
+          <label>
+            <input class="delete__checkbox" type="checkbox" />
+          </label>
+        </div>
+
+        <button class="toggle-logged-todos">
+          Show <span class="logged-count">23</span> logged items
+        </button>
+      </section>
+
+      <section class="todo-list" id="completed"></section>
+
+      <button class="add-todo">
+        <img src="icons/addTodo-icon.svg" alt="add todo icon" />
+      </button>
     </main>
-    <button class="btn--addTodo">
-      <embed src="icons/addTodo-icon.svg" />
-    </button>
     <script src="script.js"></script>
   </body>
 </html>

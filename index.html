@@ -11,47 +11,42 @@
 
   <body>
     <main class="app">
-      <h1 class="title">Checked</h1>
+      <h1 class="title">CHECKED</h1>
 
       <section class="welcomBanner">
-        <h5 class="welcomBanner__subTitle">Click to add todo</h5>
+        <h5 class="welcomBanner__subTitle">Click to add new todo</h5>
         <img src="icons/arrowDown.svg" alt="Down arrow image" />
       </section>
 
       <section class="create-todo">
         <form id="newTodo--form">
-          <label>
-            <input type="checkbox" />
-          </label>
           <input
             type="text"
             name="content"
             id="content"
-            placeholder="New todo"
+            placeholder="New to-do"
           />
           <input type="date" name="datePicker" id="datePicker" value="" />
         </form>
       </section>
 
       <section class="todo-list" id="active">
-        <h2>Todo's</h2>
+        <h2>TODO'S</h2>
 
-        <div class="todo-item">
-          <label>
-            <input type="checkbox" />
-          </label>
+        <div class="list">
+          <div class="todo-item">
+            <label>
+              <input type="checkbox" />
+            </label>
 
-          <div class="todo-itme__content">
-            <input type="text" value="Refactor code" readonly />
+            <div class="todo-itme__content">
+              <input type="text" value="Refactor code" readonly />
+            </div>
+
+            <label>
+              <input class="delete__checkbox" type="checkbox" />
+            </label>
           </div>
-
-          <div class="todo-itme__date">
-            <input type="date" name="datePicker" id="datePicker" value="" />
-          </div>
-
-          <label>
-            <input class="delete__checkbox" type="checkbox" />
-          </label>
         </div>
 
         <button class="toggle-logged-todos">

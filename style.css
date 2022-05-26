@@ -178,7 +178,7 @@ input:checked ~ .bubble__checkbox::after {
   flex: 1 1 100%;
 }
 
-.todo-list .toggle-logged-todos {
+.toggle-logged-todos {
   font-size: 0.75rem;
   color: var(--gray);
   margin-top: 5rem;

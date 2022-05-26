@@ -30,29 +30,28 @@
         </form>
       </section>
 
+      <h2 class="todo-lsit-header">TODO'S</h2>
       <section class="todo-list" id="active">
-        <h2>TODO'S</h2>
+        <div class="todo-item">
+          <label>
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+          </label>
 
-        <div class="list">
-          <div class="todo-item">
-            <label>
-              <input type="checkbox" />
-            </label>
-
-            <div class="todo-itme__content">
-              <input type="text" value="Refactor code" readonly />
-            </div>
-
-            <label>
-              <input class="delete__checkbox" type="checkbox" />
-            </label>
+          <div class="todo-itme__content">
+            <input type="text" value="Refactor code" readonly />
           </div>
-        </div>
 
-        <button class="toggle-logged-todos">
-          Show <span class="logged-count">23</span> logged items
-        </button>
+          <label>
+            <input type="checkbox" />
+            <span class="bubble__checkbox"></span>
+          </label>
+        </div>
       </section>
+
+      <button class="toggle-logged-todos">
+        Show <span class="logged-count">23</span> logged items
+      </button>
 
       <section class="todo-list" id="completed"></section>
 

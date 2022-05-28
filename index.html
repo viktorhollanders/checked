@@ -10,14 +10,13 @@
   </head>
 
   <body>
+    <h1 class="title">CHECKED</h1>
+    <section class="splash-screen">
+      <h5 class="splash-screen__subTitle">Click to add first todo</h5>
+      <img src="icons/arrowDown.svg" alt="Down arrow image" />
+    </section>
+
     <main class="app">
-      <h1 class="title">CHECKED</h1>
-
-      <section class="welcomBanner">
-        <h5 class="welcomBanner__subTitle">Click to add new todo</h5>
-        <img src="icons/arrowDown.svg" alt="Down arrow image" />
-      </section>
-
       <section class="create-todo">
         <form id="newTodo--form">
           <input
@@ -54,11 +53,10 @@
       </button>
 
       <section class="todo-list" id="completed"></section>
-
-      <button class="add-todo">
-        <img src="icons/addTodo-icon.svg" alt="add todo icon" />
-      </button>
     </main>
+    <button class="add-todo">
+      <img src="icons/addTodo-icon.svg" alt="add todo icon" />
+    </button>
     <script src="script.js"></script>
   </body>
 </html>

@@ -28,6 +28,18 @@ body {
   margin: 2rem 1.5rem;
 }
 
+.title {
+  font-family: 'Lora';
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--primary);
+
+  margin: 120px 0 20px;
+  transform: translatey(100px);
+  transition: ease-out 0.5s;
+}
+
 .onboarding {
   display: flex;
   flex-direction: column;
@@ -52,19 +64,9 @@ body {
   margin-top: 1rem;
 }
 
-.title {
-  font-family: 'Lora';
-  font-weight: 700;
-  font-size: 2rem;
-  text-align: center;
-  color: var(--primary);
-
-  margin-top: 220px;
-  margin-bottom: 20px;
-}
-
 .app {
   display: none;
+  opacity: 0;
   max-width: 414px;
   margin: 0 auto;
 }
@@ -195,4 +197,5 @@ input:checked ~ .bubble__checkbox::after {
   top: 400px;
   right: 0;
   left: 0;
+  transition: all 0.5s;
 }

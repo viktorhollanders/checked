@@ -1,9 +1,9 @@
-# A todolist app called Checked :✅
+# A todolist app called Checked ✅
 
 ## Author
 
-Viktor Hollanders
-Email: <viktorhollanders@hey.com>
+Viktor Hollanders \\
+Email: <viktorhollanders@hey.com> \\
 Website: [viktorhollanders.com] (https://viktorhollanders.com)
 
 ## About
@@ -12,5 +12,5 @@ Checked is a minimal todo list app. I wanted to get to kow basic web thecnologie
 
 ## Take a look
 
-You can view the project at **https://viktorhollanders.github.io/checked/**.
+You can view the project at [checked](https://viktorhollanders.github.io/checked/)
 

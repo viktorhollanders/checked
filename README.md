@@ -3,7 +3,9 @@
 ## Author
 
 Viktor Hollanders
+
 Email: <viktorhollanders@hey.com>
+
 Website: [viktorhollanders.com](https://viktorhollanders.com)
 
 ## About

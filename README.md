@@ -1,4 +1,4 @@
-# A todolist app called Checked ✅
+# Checked A simple todolist application
 
 ## Author
 
@@ -13,4 +13,3 @@ Checked is a minimal todo list app. I wanted to get to kow basic web thecnologie
 ## Take a look
 
 You can view the project [here](https://viktorhollanders.github.io/checked/)
-

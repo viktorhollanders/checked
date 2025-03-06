@@ -2,11 +2,9 @@
 
 ## Author
 
-Viktor Hollanders
+Viktor Hollanders <viktorhollanders@hey.com>
 
-Email: <viktorhollanders@hey.com>
-
-Website: [viktorhollanders.com](https://viktorhollanders.com)
+Personal website: [viktorhollanders.com](https://viktorhollanders.com)
 
 ## About
 
